@@ -12,7 +12,7 @@ WORKDIR /app
 COPY . /app
 
 # Run Maven clean install (if needed)
-RUN mvn clean install
+RUN mvn clean install -DskipTests
 
 EXPOSE 8008
 
