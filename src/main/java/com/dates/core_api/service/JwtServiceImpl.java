@@ -3,7 +3,6 @@ package com.dates.core_api.service;
 import com.dates.core_api.config.JwtConfig;
 import com.dates.core_api.model.entity.User;
 import com.dates.core_api.security.Role;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;

@@ -14,23 +14,21 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  app:
+  springboot-app:
+    depends_on:
+      - db
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: spring-app
-    restart: always
-    depends_on:
-      - db
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/core_api
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-    ports:
-      - "8008:8008"
     volumes:
-      - .:/app
-
+      - ./:/app
+    ports:
+      - "8080:8080"
+    command: sh -c "while true; do mvn compile && sleep 1; done & mvn spring-boot:run"
 volumes:
   postgres_data:
